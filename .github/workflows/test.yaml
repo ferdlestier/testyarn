@@ -1,0 +1,21 @@
+name: Test Yarn
+
+on:
+  workflow_dispatch:
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
+
+jobs:
+  Install-dependencies:
+    name: use yarn test
+    runs-on: ubuntu-latest
+    steps:
+      - name: yarn install before checkout
+        run: yarn install
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: install dependencies after checkout
+        run: yarn install
